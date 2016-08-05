@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-const crates = require('./scripts/crates.js');
+const crates = require('./crates.js');
 
 function start() {
   return new Promise((resolve) => {
@@ -10,6 +10,5 @@ function start() {
 
 start()
   .then(crates)
-  // .then(crates.update)
   .catch((err) => console.error(err));
 

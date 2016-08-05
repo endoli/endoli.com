@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint .",
-    "publish": "node build.js"
+    "publish": "node scripts/build.js"
   },
   "dependencies": {
     "dotenv": "^2.0.0",
