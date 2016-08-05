@@ -1,0 +1,27 @@
+{
+  "name": "endoli",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "publish": "node build.js"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "lodash": "^4.14.1",
+    "moment": "^2.14.1",
+    "moment-timezone": "^0.5.5",
+    "nodegit": "^0.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb-base": "^5.0.1",
+    "eslint-plugin-import": "^1.12.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "env": {
+      "node": true
+    }
+  }
+}

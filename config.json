@@ -1,0 +1,44 @@
+{
+  "crates": [
+    {
+      "name": "command",
+      "repository": "https://github.com/endoli/commands.rs"
+    },
+    {
+      "name": "curie",
+      "repository": "https://github.com/endoli/curie.rs"
+    },
+    {
+      "name": "disassemble",
+      "repository": "https://github.com/endoli/disassemble.rs"
+    },
+    {
+      "name": "humanize",
+      "repository": "https://github.com/endoli/humanize.rs"
+    },
+    {
+      "name": "markup",
+      "repository": "https://github.com/endoli/markup.rs"
+    },
+    {
+      "name": "message-format",
+      "repository": "https://github.com/endoli/message-format.rs"
+    },
+    {
+      "name": "rdf",
+      "repository": "https://github.com/endoli/rdf.rs"
+    },
+    {
+      "name": "sequencer",
+      "repository": "https://github.com/endoli/sequencer.rs"
+    },
+    {
+      "name": "symbolic-math",
+      "repository": "https://github.com/endoli/symbolic-math.rs"
+    },
+    {
+      "name": "topes",
+      "repository": "https://github.com/endoli/topes.rs"
+    }
+  ]
+}

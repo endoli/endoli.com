@@ -1,0 +1,10 @@
+{
+  "ecmaVersion": 6,
+  "loadEagerly": [
+    "scripts/**/*.js"
+  ],
+  "dontLoad": [],
+  "plugins": {
+    "node": {}
+  }
+}

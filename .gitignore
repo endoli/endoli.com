@@ -1,0 +1,31 @@
+# project
+crates
+public
+
+# javascript
+**/node_modules
+**/npm-debug.log
+
+# rust
+**/target
+**/Cargo.lock
+
+# os-specific
+.*.sw?
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.DS_Store
+.DS_Store?
+.DocumentRevisions-V100
+.LSOverride
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+._*
+.apdisk
+.fseventsd
+Icon^M^M
+Thumbs.db
+ehthumbs.db
+thumbs.db
