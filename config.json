@@ -1,7 +1,7 @@
 {
   "crates": [
     {
-      "name": "command",
+      "name": "commands",
       "repository": "https://github.com/endoli/commands.rs"
     },
     {
