@@ -5,6 +5,8 @@
   ],
   "dontLoad": [],
   "plugins": {
-    "node": {}
+    "node": {},
+    "browser": {},
+    "jquery": {}
   }
 }
