@@ -3,7 +3,7 @@
 ## Requirements
 
 - UNIX or Linux
-- Node.js version >= 4.x.x
+- Node.js v6.x.x
 - npm
 - rust
 - cargo
