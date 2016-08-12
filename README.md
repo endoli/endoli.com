@@ -22,4 +22,4 @@
 
 ## Limitations
 - repository tags that are unable to have docs built are retried each time
-- `master` is rebuilt each time, irrelevant of was there any changes meanwhile
+- `master` is rebuilt each time, irrelevant of were there any changes meanwhile
