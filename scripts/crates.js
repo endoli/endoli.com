@@ -1,4 +1,4 @@
-/* eslint-disable no-console, new-cap */
+/* eslint-disable new-cap */
 
 const fs = require('fs');
 const _ = require('lodash');

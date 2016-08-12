@@ -13,7 +13,9 @@
     "lodash": "^4.14.1",
     "moment": "^2.14.1",
     "moment-timezone": "^0.5.5",
-    "nodegit": "^0.14.1"
+    "nodegit": "^0.14.1",
+    "toml": "^2.3.0",
+    "toml-require": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "^3.2.2",
@@ -24,6 +26,9 @@
     "extends": "airbnb-base",
     "env": {
       "node": true
+    },
+    "rules": {
+      "no-console": 0
     }
   }
 }

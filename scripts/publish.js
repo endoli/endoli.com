@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const crates = require('./crates.js');
 const build = require('./build.js');
 
