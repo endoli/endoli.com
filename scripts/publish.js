@@ -1,5 +1,5 @@
 const crates = require('./crates.js');
-const build = require('./build.js');
+const library = require('./library.js');
 
 function start() {
   return new Promise((resolve) => {
@@ -9,6 +9,6 @@ function start() {
 
 start()
   .then(crates)
-  .then(build)
+  .then(library)
   .catch((err) => console.error(err));
 
