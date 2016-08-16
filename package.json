@@ -15,6 +15,9 @@
     "moment-timezone": "^0.5.5",
     "nodegit": "^0.14.1",
     "remark": "^5.1.0",
+    "remark-highlight.js": "^4.0.0",
+    "remark-html": "^5.0.0",
+    "remark-yaml-meta": "^0.1.0",
     "toml": "^2.3.0",
     "toml-require": "^1.1.0"
   },
