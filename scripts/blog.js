@@ -24,7 +24,7 @@ const start = (all) =>
 
         _.each(posts, (post) => {
           const date = `<span>${post.date.format('LL')}</span>`;
-          const link = `<span><a href="./blog/${post.filename}">${post.title}</a></span>`;
+          const link = `<span><a href="./blog/posts/${post.filename}">${post.title}</a></span>`;
           template('#content').append(`<div class='post'>${date} ${link}</div>`);
         });
 

@@ -63,7 +63,7 @@ const publishPost = (file, cb) =>
     const template = cheerio.load(data);
     const high = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/';
     template('#content').append(file.contents);
-    template('head').append('<script src="../scripts/highlight.js"></script>');
+    template('head').append('<script src="../../scripts/highlight.js"></script>');
     _.each(config.highlight, (lang) => template('head').append(`<script src="${high}${lang}.min.js"></script>`));
     template('head').append('<script>hljs.initHighlightingOnLoad();</script>');
 
@@ -104,7 +104,7 @@ const publishPost = (file, cb) =>
     } else {
       console.warn('Blog post is missing tags!');
     }
-    return fse.outputFile(path.join('./public/blog/', file.meta.filename), template.html(), (err) => {
+    return fse.outputFile(path.join('./public/blog/posts/', file.meta.filename), template.html(), (err) => {
       if (err) {
         return cb(err);
       }
