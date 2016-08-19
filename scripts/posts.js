@@ -14,7 +14,7 @@ const all = [];
 
 const start = () =>
   new Promise((resolve) => {
-    fse.ensureDir('./public/blog/', () => resolve());
+    fse.emptyDir('./public/blog/', () => resolve());
   });
 
 const series = (arr, iter) =>
@@ -83,9 +83,9 @@ const publishPost = (file, cb) =>
       template('#content').append('<div id="categories">Categories: </div>');
       _.each(file.meta.categories, (category, index) => {
         if (index !== file.meta.categories.length - 1) {
-          template('#categories').append(`<span>${category}, </span>`);
+          template('#categories').append(`<span><a href="../categories/${category}.html">${category}</a>, </span>`);
         } else {
-          template('#categories').append(`<span>${category}</span>`);
+          template('#categories').append(`<span><a href="../categories/${category}.html">${category}</a></span>`);
         }
       });
     } else {
@@ -96,9 +96,9 @@ const publishPost = (file, cb) =>
       template('#content').append('<div id="tags">Tags: </div>');
       _.each(file.meta.tags, (tag, index) => {
         if (index !== file.meta.tags.length - 1) {
-          template('#tags').append(`<span>${tag}, </span>`);
+          template('#tags').append(`<span><a href="../tags/${tag}.html">${tag}</a>, </span>`);
         } else {
-          template('#tags').append(`<span>${tag}</span>`);
+          template('#tags').append(`<span><a href="../tags/${tag}.html">${tag}</a></span>`);
         }
       });
     } else {

@@ -32,7 +32,7 @@ const start = (all) =>
           if (err) {
             reject(err);
           } else {
-            resolve();
+            resolve(all);
           }
         });
       }
