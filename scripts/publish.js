@@ -21,8 +21,8 @@ function start() {
 }
 
 start()
-  // .then(crates)
-  // .then(library)
+  .then(crates)
+  .then(library)
   .then(posts)
   .then(blog)
   .then(categories)

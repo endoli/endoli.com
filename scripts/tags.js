@@ -11,7 +11,7 @@ const start = (all) =>
         reject(err);
       } else {
         let tags = [];
-        _.each(all, (post) => { tags = _.concat(tags, post.tags); });
+        _.each(all, (post) => { tags = _.concat(tags, post.meta.tags); });
         tags = _(tags)
           .uniq()
           .map((tag) => ({ tag }))
@@ -22,7 +22,7 @@ const start = (all) =>
           tag.posts = [];
         });
         _.each(all, (post) => {
-          _.each(post.tags, (tag) => {
+          _.each(post.meta.tags, (tag) => {
             tags[tag].posts.push(post);
           });
         });
@@ -34,7 +34,8 @@ const start = (all) =>
           template('#content').append(`<div id="tag">${name}:</div>`);
 
           _.each(tag.posts, (post) => {
-            template('#tag').append(`<div><a href="../posts/${post.filename}">${post.title}</a></div>`);
+            const m = post.meta;
+            template('#tag').append(`<div><a href="../posts/${m.filename}">${m.title}</a></div>`);
           });
 
           fse.outputFileSync(location, template.html());

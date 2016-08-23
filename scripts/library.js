@@ -63,7 +63,6 @@ const listLibs = () =>
     resolve(libs);
   });
 
-/* eslint-disable no-param-reassign */
 const listTags = (libs) =>
   new Promise((resolve) => {
     _.each(libs, (lib) => {
@@ -71,7 +70,6 @@ const listTags = (libs) =>
     });
     resolve(libs);
   });
-/* eslint-enable no-param-reassign */
 
 const writeLibs = (libs) =>
   new Promise((resolve, reject) => {

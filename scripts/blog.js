@@ -14,11 +14,11 @@ const start = (all) =>
         const template = cheerio.load(data);
         const posts = _(all)
           .map((post) => ({
-            title: post.title,
-            filename: post.filename,
-            date: moment(post.date),
+            title: post.meta.title,
+            filename: post.meta.filename,
+            date: moment(post.meta.date),
           }))
-          .sortBy('date')
+          .sortBy((post) => post.date)
           .reverse()
           .value();
 
