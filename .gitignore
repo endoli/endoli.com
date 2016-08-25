@@ -1,6 +1,7 @@
 # project
 crates
 public
+config.json
 blog/example-two.md
 blog/example-three.md
 blog/example-four.md
