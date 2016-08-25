@@ -11,7 +11,7 @@
 ## Instructions
 
 - `npm install -d` to install all the dependencies
-- edit `config.json` according to your needs
+- create end edit `config.json` according to `config.template.json`
 - create posts according to `blog/example.md`
 - `npm run publish` to build everything
 
