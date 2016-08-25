@@ -4,6 +4,7 @@ const posts = require('./posts.js');
 const blog = require('./blog.js');
 const categories = require('./categories.js');
 const tags = require('./tags.js');
+const feed = require('./feed.js');
 const fse = require('fs-extra');
 
 function start() {
@@ -27,5 +28,6 @@ start()
   .then(blog)
   .then(categories)
   .then(tags)
+  .then(feed)
   .catch((err) => console.error(err));
 

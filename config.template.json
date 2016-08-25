@@ -1,4 +1,5 @@
 {
+  "host": "https://example.com/",
   "highlight": [
     "armasm",
     "capnproto",
