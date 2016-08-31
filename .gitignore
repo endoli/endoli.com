@@ -2,6 +2,7 @@
 crates
 public
 config.json
+blog/example-one.md
 blog/example-two.md
 blog/example-three.md
 blog/example-four.md

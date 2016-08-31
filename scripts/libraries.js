@@ -2,45 +2,14 @@
 
 const fse = require('fs-extra');
 const path = require('path');
+const config = require('../config.json');
 const _ = require('lodash');
 const fs = require('fs');
+const cheerio = require('cheerio');
 
 require('toml-require').install({ toml: require('toml') });
 
 const start = () => new Promise((resolve) => resolve());
-
-const series = (arr, iter) =>
-  arr.reduce((p, item) => p.then(() => iter(item)), Promise.resolve());
-
-const copy = (input, output) =>
-  new Promise((resolve, reject) =>
-    fse.copy(input, output, { clobber: true }, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(err);
-      }
-    })
-  );
-
-const copyAll = () => {
-  const files = [
-    {
-      input: path.resolve('./scripts/page.js'),
-      output: path.resolve('./public/scripts/page.js'),
-    },
-    {
-      input: path.resolve('./templates/library.html'),
-      output: path.resolve('./public/library.html'),
-    },
-    {
-      input: path.resolve('./styles/theme.css'),
-      output: path.resolve('./public/styles/theme.css'),
-    },
-  ];
-
-  return series(files, (file) => copy(file.input, file.output));
-};
 
 const normalizeName = (dir) => {
   let normalized = require(path.join('../crates', dir, 'Cargo.toml')).package.name;
@@ -78,13 +47,24 @@ const writeLibs = (libs) =>
       if (err) {
         reject(err);
       } else {
-        resolve();
+        resolve(libs);
       }
     });
+  });
+
+const createList = (libs) =>
+  new Promise((resolve) => {
+    const template = cheerio.load(fs.readFileSync('./templates/libraries.html', 'utf8'));
+    _.each(libs, (lib) => {
+      const location = `${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html`;
+      template('#content').append(`<div><a href=${location}>${lib.name}</a></div>`);
+    });
+    fse.outputFileSync('./public/libraries.html', template.html());
+    resolve();
   });
 
 module.exports = () => start()
   .then(listLibs)
   .then(listTags)
   .then(writeLibs)
-  .then(copyAll);
+  .then(createList);
