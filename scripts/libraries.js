@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+/* eslint-disable global-require, max-len */
 
 const fse = require('fs-extra');
 const path = require('path');
@@ -40,31 +40,37 @@ const listTags = (libs) =>
     resolve(libs);
   });
 
-const writeLibs = (libs) =>
-  new Promise((resolve, reject) => {
-    fse.ensureDirSync(path.resolve('./public/data/'));
-    fse.writeJson('./public/data/crates.json', libs, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(libs);
-      }
-    });
-  });
-
 const createList = (libs) =>
   new Promise((resolve) => {
     const template = cheerio.load(fs.readFileSync('./templates/libraries.html', 'utf8'));
     _.each(libs, (lib) => {
-      const location = `${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html`;
+      const location = `${config.host}/libraries/${lib.name}/index.html`;
       template('#content').append(`<div><a href=${location}>${lib.name}</a></div>`);
     });
     fse.outputFileSync('./public/libraries.html', template.html());
+    resolve(libs);
+  });
+
+const createIndexes = (libs) =>
+  new Promise((resolve) => {
+    _.each(libs, (lib) => {
+      const template = cheerio.load(fs.readFileSync('./templates/library.html', 'utf8'));
+      const output = `./public/libraries/${lib.name}/index.html`;
+      const location = `${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html`;
+      template('#documentationFrame').attr('src', location);
+      template('head').append(`<script>function getInfo(){
+        return {
+          host: '${config.host}',
+          lib: ${JSON.stringify(lib)}
+        };
+      }</script>`);
+      fse.outputFileSync(output, template.html());
+    });
     resolve();
   });
 
 module.exports = () => start()
   .then(listLibs)
   .then(listTags)
-  .then(writeLibs)
-  .then(createList);
+  .then(createList)
+  .then(createIndexes);

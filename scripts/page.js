@@ -11,10 +11,9 @@ function resizeFrame(iframe) {
 }
 
 function reloadFrame() {
-  var curLibVal = $('#librarySelector option:selected').val();
-  var curLibName = $('#librarySelector option:selected').text();
+  var info = getInfo();
   var curTag = $('#versionSelector option:selected').val();
-  var src = './libraries/' + curLibName + '/' + curTag + '/' + curLibVal + '/index.html';
+  var src = info.host + '/libraries/' + info.lib.name + '/' + curTag + '/' + info.lib.realName + '/index.html';
   var frame = $('#documentationFrame');
 
   frame.on('load', function () {
@@ -23,40 +22,16 @@ function reloadFrame() {
   frame.attr('src', src);
 }
 
-function onLibraryChange() {
-  var curLib = $('#librarySelector option:selected').text();
-  var tags;
-  $.each(crates, function(index, crate) {
-    if (crate.name === curLib) {
-      var version = $("#versionSelector");
-      $('#versionSelector').empty();
-      $.each(crate.tags, function(index, tag) {
-        version.append(new Option(tag, tag));
-      });
-      reloadFrame();
-      return false;
-    }
-  });
-}
-
 function onVersionChange() {
   reloadFrame();
 }
 
 window.onload = function () {
-  $.getJSON('./data/crates.json', function(cratesData) {
-    var library = $("#librarySelector");
-    var version = $("#versionSelector");
-    crates = cratesData;
-    $.each(crates, function(index, crate) {
-      library.append(new Option(crate.name, crate.realName));
-    });
-    $.each(crates[0].tags, function(index, tag) {
-      version.append(new Option(tag, tag));
-    });
-    reloadFrame();
-    $('#librarySelector').change(onLibraryChange);
-    $('#versionSelector').change(onVersionChange);
+  var info = getInfo();
+  var version = $("#versionSelector");
+  $.each(info.lib.tags, function(index, tag) {
+    version.append(new Option(tag, tag));
   });
+  $('#versionSelector').change(onVersionChange);
 };
 
