@@ -32,6 +32,7 @@ window.onload = function () {
   $.each(info.lib.tags, function(index, tag) {
     version.append(new Option(tag, tag));
   });
+  reloadFrame();
   $('#versionSelector').change(onVersionChange);
 };
 
