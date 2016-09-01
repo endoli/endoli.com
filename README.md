@@ -12,7 +12,7 @@
 
 - `npm install -d` to install all the dependencies
 - create end edit `config.json` according to `config.template.json`
-- create posts according to example below
+- create posts according to [example below](#example)
 - add any binary assets to `assets` directory
 - `npm run publish` to build everything
 
@@ -54,7 +54,5 @@ Lorem ipsum dolor sit amet.
 Proin ultricies eget dolor id condimentum. Proin viverra sollicitudin tellus
 posuere accumsan. Ut tincidunt sapien et turpis vulputate, at facilisis nisl
 euismod. Nam sed tortor vel quam porta efficitur in nec nunc. Fusce ligula est.
-
-};
 ```
 
