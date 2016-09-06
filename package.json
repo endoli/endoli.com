@@ -8,6 +8,7 @@
     "development": "http-server"
   },
   "dependencies": {
+    "autoprefixer": "^6.4.1",
     "cheerio": "^0.20.0",
     "dotenv": "^2.0.0",
     "fs-extra": "^0.30.0",
@@ -16,6 +17,7 @@
     "moment-timezone": "^0.5.5",
     "node-fetch": "^1.6.0",
     "nodegit": "^0.14.1",
+    "postcss": "^5.1.2",
     "remark": "^5.1.0",
     "remark-highlight.js": "^4.0.0",
     "remark-html": "^5.0.0",
