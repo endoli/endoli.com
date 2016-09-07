@@ -32,7 +32,7 @@ const start = (all) =>
           const location = `./public/blog/categories/${name}.html`;
 
           template('#content').append(`
-            <h3>${name}:</h3>
+            <h1>'${name}'</h1>
             <ul></ul>
           `);
 

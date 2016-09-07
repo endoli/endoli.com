@@ -13,20 +13,51 @@ const start = (all) =>
       } else {
         const template = cheerio.load(data);
         const posts = _(all)
-          .map((post) => ({
-            title: post.meta.title,
-            filename: post.meta.filename,
-            date: moment(post.meta.date),
+          .map(({ meta }) => ({
+            title: meta.title,
+            filename: meta.filename,
+            date: moment(meta.date),
           }))
           .sortBy((post) => post.date)
           .reverse()
+          .groupBy(({ date }) => date.year())
+          .transform((res, value, key) => {
+            res[key] = _.groupBy(value, ({ date }) => date.month());
+          })
+          .value();
+        const years = _(posts)
+          .keys()
+          .sortBy((year) => year)
+          .reverse()
           .value();
 
-        template('#content').append('<ul id="postList"></ul>');
-        _.each(posts, (post) => {
-          const date = `<span>${post.date.format('LL')}</span>`;
-          const link = `<a href="./blog/posts/${post.filename}">${post.title}</a>`;
-          template('#postList').append(`<li>${link}, ${date}</li>`);
+        _.each(years, (year) => {
+          template('#content').append(`
+            <h1>${year}</h1>
+          `);
+
+          const months = _(posts[year])
+            .keys()
+            .sortBy((month) => month)
+            .reverse()
+            .value();
+
+          _.each(months, (month) => {
+            template('#content').append(`
+              <h2>${moment().month(month).format('MMMM')}</h2>
+            `);
+            let entries = '<ul>';
+            _.each(posts[year][month], (post) => {
+              entries = entries.concat(`
+                <li>
+                  <span>${post.date.format('Do')}</span>
+                  <a href="./blog/posts/${post.filename}">${post.title}</a>
+                </li>
+              `);
+            });
+            entries = entries.concat('</ul>');
+            template('#content').append(entries);
+          });
         });
 
         fse.outputFile('./public/blog.html', template.html(), (err) => {
