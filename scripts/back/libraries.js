@@ -1,19 +1,19 @@
-/* eslint-disable global-require, max-len */
+/* eslint-disable global-require, max-len, prefer-const */
 
 const fse = require('fs-extra');
 const path = require('path');
-const config = require('../config.json');
 const _ = require('lodash');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
+const config = require('../../config.json');
 
 require('toml-require').install({ toml: require('toml') });
 
 const start = () => new Promise((resolve) => resolve());
 
 const normalizeName = (dir) => {
-  let normalized = require(path.join('../crates', dir, 'Cargo.toml')).package.name;
+  let normalized = require(path.join('../../crates', dir, 'Cargo.toml')).package.name;
   normalized = normalized.replace('-', '_');
 
   return normalized;
@@ -22,7 +22,7 @@ const normalizeName = (dir) => {
 const normalizeTag = (tag) => tag.replace('v', '');
 
 const getDevelopmentVersion = (dir) =>
-  require(path.join('../crates', dir, 'Cargo.toml')).package.version;
+  require(path.join('../../crates', dir, 'Cargo.toml')).package.version;
 
 const getDirectories = (location) =>
   fs.readdirSync(location).filter((file) =>
@@ -68,45 +68,81 @@ const listTags = (libs) =>
 const createList = (libs) =>
   new Promise((resolve) => {
     const template = cheerio.load(fs.readFileSync('./templates/libraries.html', 'utf8'));
+    template('#content').append(`
+      <table>
+        <thead>
+          <tr>
+            <th>Library</th>
+            <th>Release</th>
+            <th>Development</th>
+            <th>Versions</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    `);
 
     _.each(libs, (lib) => {
-      template('#content').append(`
-        <div id="${lib.name}">
-          ${lib.name}
-        </div>`
-      );
+      let libName;
+      let libRelease;
+      let libDevelopment;
+      let libVersions;
+
+      libName = `<td>${lib.name}</td>`;
 
       if (lib.currentVersion) {
-        template(`#${lib.name}`).append(`
-          <a href="${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html">
-            Current release (${lib.currentVersion})
-          </a>`
-        );
+        libRelease = `
+          <td>
+            <a href="${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html">
+              ${lib.currentVersion}
+            </a>
+          </td>
+        `;
       } else {
-        template(`#${lib.name}`).append('<span>Unpublished</span>');
+        libRelease = '<td>Unpublished</td>';
       }
 
-      template(`#${lib.name}`).append(`
-        <a href="${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html">
-          Development
-        </a>`
-      );
+      libDevelopment = `
+        <td>
+          <a href="${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html">
+            ${lib.developmentVersion}
+          </a>
+        </td>
+      `;
 
       if (lib.tags.length > 2) {
-        template(`#${lib.name}`).append('<select class="versionSelector"><option value="other">Other versions</option></select>');
+        let options = '';
 
         _(lib.tags)
           .tail()
           .each((tag) => {
             if (normalizeTag(tag) !== lib.currentVersion) {
-              template(`#${lib.name} select`).append(`
+              options = options.concat(`
                 <option value="${config.host}/libraries/${lib.name}/${tag}/${lib.realName}/index.html">
                   ${tag}
                 </option>
               `);
             }
           });
+
+        libVersions = `
+          <td>
+            <select class="versionSelector">
+              <option value="other">Other versions</option>
+              ${options}
+            </select>
+          </td>
+        `;
+      } else {
+        libVersions = '<td>N/A</td>';
       }
+
+      const lastRow = template('#content > table > tbody').append('<tr></tr>');
+      lastRow.append(libName);
+      lastRow.append(libRelease);
+      lastRow.append(libDevelopment);
+      lastRow.append(libVersions);
     });
 
     fse.outputFileSync('./public/libraries.html', template.html());

@@ -8,7 +8,7 @@ const html = require('remark-html');
 const hljs = require('remark-highlight.js');
 const metaPlugin = require('remark-yaml-meta');
 const cheerio = require('cheerio');
-const config = require('../config.json');
+const config = require('../../config.json');
 
 let all = [];
 
@@ -55,7 +55,7 @@ const copyAll = () => {
       output: path.resolve('./public/blog.html'),
     },
     {
-      input: path.resolve('./scripts/highlight.js'),
+      input: path.resolve('./scripts/front/highlight.js'),
       output: path.resolve('./public/scripts/highlight.js'),
     },
   ];

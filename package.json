@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint .",
-    "publish": "node scripts/publish.js",
+    "publish": "node scripts/back/publish.js",
     "development": "http-server"
   },
   "dependencies": {

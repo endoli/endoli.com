@@ -74,9 +74,9 @@ const styles = () => {
   return series(files, (file) => style(file.input, file.output));
 };
 
-function scripts() {
-  return new Promise((resolve, reject) => {
-    const input = './scripts/page.js';
+const scripts = () =>
+  new Promise((resolve, reject) => {
+    const input = './scripts/front/page.js';
     const output = './public/scripts/page.js';
     fse.copy(input, output, { clobber: true }, (err) => {
       if (err) {
@@ -86,7 +86,6 @@ function scripts() {
       }
     });
   });
-}
 
 home()
   .then(styles)

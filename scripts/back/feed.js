@@ -1,10 +1,10 @@
-const config = require('../config.json');
 const _ = require('lodash');
 const fse = require('fs-extra');
 const RSS = require('rss');
+const config = require('../../config.json');
 
-function build(all) {
-  return new Promise((resolve, reject) => {
+const build = (all) =>
+  new Promise((resolve, reject) => {
     const feed = new RSS({
       title: 'Endoli Blog',
       description: 'Endoli Blog Feed',
@@ -28,6 +28,5 @@ function build(all) {
       }
     });
   });
-}
 
 module.exports = (all) => build(all);

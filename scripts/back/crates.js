@@ -4,9 +4,9 @@ const fs = require('fs');
 const _ = require('lodash');
 const exec = require('child_process').exec;
 const execSync = require('child_process').execSync;
-const config = require('../config.json');
 const path = require('path');
 const git = require('nodegit');
+const config = require('../../config.json');
 
 const start = () =>
   new Promise((resolve, reject) => {

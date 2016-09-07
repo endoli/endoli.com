@@ -22,10 +22,11 @@ const start = (all) =>
           .reverse()
           .value();
 
+        template('#content').append('<ul id="postList"></ul>');
         _.each(posts, (post) => {
           const date = `<span>${post.date.format('LL')}</span>`;
-          const link = `<span><a href="./blog/posts/${post.filename}">${post.title}</a></span>`;
-          template('#content').append(`<div class='post'>${date} ${link}</div>`);
+          const link = `<a href="./blog/posts/${post.filename}">${post.title}</a>`;
+          template('#postList').append(`<li>${link}, ${date}</li>`);
         });
 
         fse.outputFile('./public/blog.html', template.html(), (err) => {

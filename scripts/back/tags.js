@@ -31,11 +31,14 @@ const start = (all) =>
           const template = cheerio.load(fs.readFileSync('./templates/tag.html', 'utf8'));
           const location = `./public/blog/tags/${name}.html`;
 
-          template('#content').append(`<div id="tag">${name}:</div>`);
+          template('#content').append(`
+            <h3>${name}:</h3>
+            <ul></ul>
+          `);
 
           _.each(tag.posts, (post) => {
             const m = post.meta;
-            template('#tag').append(`<div><a href="../posts/${m.filename}">${m.title}</a></div>`);
+            template('#content ul').append(`<li><a href="../posts/${m.filename}">${m.title}</a></li>`);
           });
 
           fse.outputFileSync(location, template.html());
