@@ -3,6 +3,7 @@ const _ = require('lodash');
 const path = require('path');
 const fs = require('fs');
 const fse = require('fs-extra');
+const moment = require('moment');
 const remark = require('remark');
 const html = require('remark-html');
 const hljs = require('remark-highlight.js');
@@ -104,36 +105,24 @@ const publishPost = (file) => {
   const previous = getPrevious(file);
   const next = getNext(file);
 
-  template('#content').append(file.contents);
   template('head').append('<script src="../../scripts/highlight.js"></script>');
   _.each(config.highlight, (lang) => template('head').append(`<script src="${high}${lang}.min.js"></script>`));
   template('head').append('<script>hljs.initHighlightingOnLoad();</script>');
 
-  if (previous || next) {
-    template('#content').append('<div id="series"></div>');
-    if (previous) {
-      template('#series').append(`<span id="previous"><a href="./${previous.meta.filename}">Previous</a></span>`);
-    }
-    if (next) {
-      if (previous) {
-        template('#series').append(`<span id="next"><a href="./${next.meta.filename}"> Next</a></span>`);
-      } else {
-        template('#series').append(`<span id="next"><a href="./${next.meta.filename}">Next</a></span>`);
-      }
-    }
-  }
-
   if (file.meta.author) {
-    template('#content').append(`<div id="author">Author: ${file.meta.author}</div>`);
+    template('#content').append(`<div id="author">${file.meta.author}</div>`);
   } else {
     console.warn('Blog post is missing author!');
   }
 
   if (file.meta.date) {
-    template('#content').append(`<div id="date">Date: ${file.meta.date}</div>`);
+    template('#content').append(`<div id="date">${moment(file.meta.date).format('MMMM Do YYYY')}</div>`);
   } else {
     console.warn('Blog post is missing date!');
   }
+
+  template('#content').append('<div id="post"></div>');
+  template('#post').append(file.contents);
 
   if (file.meta.categories) {
     template('#content').append('<div id="categories">Categories: </div>');
@@ -159,6 +148,20 @@ const publishPost = (file) => {
     });
   } else {
     console.warn('Blog post is missing tags!');
+  }
+
+  if (previous || next) {
+    template('#content').append('<div id="series"></div>');
+    if (previous) {
+      template('#series').append(`<span id="previous"><a href="./${previous.meta.filename}">Previous</a></span>`);
+    }
+    if (next) {
+      if (previous) {
+        template('#series').append(`<span id="next"><a href="./${next.meta.filename}"> Next</a></span>`);
+      } else {
+        template('#series').append(`<span id="next"><a href="./${next.meta.filename}">Next</a></span>`);
+      }
+    }
   }
 
   fse.outputFileSync(path.join('./public/blog/posts/', file.meta.filename), template.html());
