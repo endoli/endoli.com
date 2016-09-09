@@ -33,7 +33,7 @@ const start = (all) =>
 
         _.each(years, (year) => {
           template('#content').append(`
-            <h1>${year}</h1>
+            <h1 class="year">${year}</h1>
           `);
 
           const months = _(posts[year])
@@ -44,9 +44,9 @@ const start = (all) =>
 
           _.each(months, (month) => {
             template('#content').append(`
-              <h2>${moment().month(month).format('MMMM')}</h2>
+              <h2 class="month">${moment().month(month).format('MMMM')}</h2>
             `);
-            let entries = '<ul>';
+            let entries = '<ul class="day">';
             _.each(posts[year][month], (post) => {
               entries = entries.concat(`
                 <li>

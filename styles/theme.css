@@ -1,3 +1,12 @@
+.colors {
+  color: #486591; /* dark blue */
+  color: #96c4de; /* blue */
+  color: #d6e6f3; /* light blue */
+  color: #ffffff; /* white */
+  color: #df7021; /* orange */
+  color: #030f21; /* dark */
+}
+
 body, html {
   min-height: 100vh;
 }
@@ -7,45 +16,212 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
+  font-size: 20px;
+  font-family: 'Roboto Slab', serif;
+  line-height: 1.6em;
+  /* font-family: 'Roboto Slab', serif; */
+  /* font-family: 'Teko', sans-serif; */
 }
 
 /* header */
 
 #headerContainer {
-  background-color: #ecd083;
+  background-color: #dadada;
   display: flex;
   justify-content: center;
+  font-family: 'Teko', sans-serif;
 }
 
 header {
-  background-color: #dfb544;
-  width: 960px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  width: 640px;
+  height: 86px;
+  padding-bottom: 10px;
+}
+
+header > .logo {
+  /* background-color: #96c4de; /1* blue *1/ */
+  width: 192px;
+  height: 64px;
+  margin: 0 0 -10px 0;
+  padding: 0;
+}
+
+header > nav {
+  display: flex;
+  flex-grow: 2;
+  margin-left: auto;
+  max-width: 400px;
+}
+
+header > nav > ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  list-style: none;
+  flex-grow: 1;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+header > nav > ul > li {
+  font-size: 1.8em;
+  font-weight: bold;
+  /* width: 64px; */
+}
+
+header > nav > ul > li > a {
+  /* color: #ffffff; /1* white *1/ */
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+header > nav > ul > li > a:hover {
+  /* color: #df7021; /1* orange *1/ */
 }
 
 /* content */
 
 #contentContainer {
-  background-color: #8fef88;
   display: flex;
   flex-grow: 1;
   justify-content: center;
 }
 
 #content {
-  background-color: #5adf50;
-  width: 960px;
+  width: 640px;
+  padding: 16px 0;
+}
+
+.subtitle {
+  /* margin: 0 -32px; */
+  padding: 0 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* color: #486591; /1* dark blue *1/ */
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  font-style: normal;
+  border-bottom: 2px dotted black;
+  border-top: 2px solid black;
+}
+
+#post {
+  /* max-width: 640px; */
+  /* margin: 0 auto; */
+  padding: 16px;
+}
+
+#post h1, #post h2, #post h3 {
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+#post h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+  margin: 54px auto 10px auto;
+}
+
+#post h2 {
+  font-size: 1.9em;
+  font-weight: bold;
+  margin: 40px auto 6px auto;
+}
+
+#post h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 30px auto 2px auto;
+}
+
+#categories, #tags {
+  padding: 0 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* color: #486591; /1* dark blue *1/ */
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  font-style: normal;
+}
+
+#categories {
+  border-top: 2px dotted black;
+}
+
+#tags {
+  border-bottom: 2px solid black;
+}
+
+#series {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  font-style: normal;
+  margin: 24px 0 0 0;
+}
+
+h1.year {
+  color: #aeaeae;
+  padding-left: 16px;
+  font-family: 'Teko', sans-serif;
+  margin: 64px auto 8px auto;
+}
+
+h2.month {
+  color: #7a7a7a;
+  padding-left: 32px;
+  font-family: 'Teko', sans-serif;
+  margin: 16px auto 4px auto;
+}
+
+ul.day {
+  margin: 16px auto 4px 48px;
+}
+
+#content table {
+  width: 100%;
+  margin: 32px auto 24px auto;
 }
 
 /* footer */
 
 #footerContainer {
-  background-color: #7cbbe3;
+  background-color: #dadada;
   display: flex;
   justify-content: center;
 }
 
 footer {
-  background-color: #4ea2d8;
-  width: 960px;
+  width: 640px;
+}
+
+footer > nav > ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  list-style: none;
+  flex-grow: 1;
+  justify-content: space-around;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  font-style: normal;
+  margin: 16px 0;
+  padding: 0;
 }
 

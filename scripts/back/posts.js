@@ -105,30 +105,41 @@ const publishPost = (file) => {
   const previous = getPrevious(file);
   const next = getNext(file);
 
+  let author;
+  let date;
+
   template('head').append('<script src="../../scripts/highlight.js"></script>');
   _.each(config.highlight, (lang) => template('head').append(`<script src="${high}${lang}.min.js"></script>`));
   template('head').append('<script>hljs.initHighlightingOnLoad();</script>');
 
   if (file.meta.author) {
-    template('#content').append(`<div id="author">${file.meta.author}</div>`);
+    author = `<div id="author">${file.meta.author}</div>`;
   } else {
     console.warn('Blog post is missing author!');
   }
 
   if (file.meta.date) {
-    template('#content').append(`<div id="date">${moment(file.meta.date).format('MMMM Do YYYY')}</div>`);
+    date = `<div id="date">${moment(file.meta.date).format('MMMM Do YYYY')}</div>`;
   } else {
     console.warn('Blog post is missing date!');
   }
 
+  template('#content').append(`
+    <div class="subtitle">
+      <span class="filler">Blog post by&nbsp;</span>
+      <span class="author">${author}</span>
+      <span class="filler">, on&nbsp;</span>
+      <span class="date">${date}</span>
+    </div>`
+  );
   template('#content').append('<div id="post"></div>');
   template('#post').append(file.contents);
 
   if (file.meta.categories) {
-    template('#content').append('<div id="categories">Categories: </div>');
+    template('#content').append('<div id="categories">Categories:&nbsp;</div>');
     _.each(file.meta.categories, (category, index) => {
       if (index !== file.meta.categories.length - 1) {
-        template('#categories').append(`<span><a href="../categories/${category}.html">${category}</a>, </span>`);
+        template('#categories').append(`<span><a href="../categories/${category}.html">${category}</a>,&nbsp;</span>`);
       } else {
         template('#categories').append(`<span><a href="../categories/${category}.html">${category}</a></span>`);
       }
@@ -138,10 +149,10 @@ const publishPost = (file) => {
   }
 
   if (file.meta.tags) {
-    template('#content').append('<div id="tags">Tags: </div>');
+    template('#content').append('<div id="tags">Tags:&nbsp;</div>');
     _.each(file.meta.tags, (tag, index) => {
       if (index !== file.meta.tags.length - 1) {
-        template('#tags').append(`<span><a href="../tags/${tag}.html">${tag}</a>, </span>`);
+        template('#tags').append(`<span><a href="../tags/${tag}.html">${tag}</a>,&nbsp;</span>`);
       } else {
         template('#tags').append(`<span><a href="../tags/${tag}.html">${tag}</a></span>`);
       }
