@@ -3,6 +3,9 @@
   overflow-x: auto;
   padding: 0.5em;
   background: #F0F0F0;
+  font-size: 0.8em;
+  line-height: 1.4em;
+  border-left: 2px solid #777777;
 }
 
 .hljs,

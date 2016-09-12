@@ -16,20 +16,25 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
-  font-size: 20px;
-  font-family: 'Roboto Slab', serif;
+  color: #3d3d3d;
+  font-size: 18px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   line-height: 1.6em;
-  /* font-family: 'Roboto Slab', serif; */
-  /* font-family: 'Teko', sans-serif; */
+  /* font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; */
+  /* font-family: 'Alegreya Sans SC', sans-serif; */
+}
+
+a {
+  text-decoration: none;
 }
 
 /* header */
 
 #headerContainer {
-  background-color: #dadada;
+  /* background-color: #dadada; */
   display: flex;
   justify-content: center;
-  font-family: 'Teko', sans-serif;
+  border-bottom: 1px solid #3d3d3d;
 }
 
 header {
@@ -70,7 +75,8 @@ header > nav > ul {
 
 header > nav > ul > li {
   font-size: 1.8em;
-  font-weight: bold;
+  font-weight: normal;
+  font-style: normal;
   /* width: 64px; */
 }
 
@@ -99,18 +105,16 @@ header > nav > ul > li > a:hover {
 }
 
 .subtitle {
-  /* margin: 0 -32px; */
+  margin: 0;
   padding: 0 4px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  /* color: #486591; /1* dark blue *1/ */
-  font-family: 'Teko', sans-serif;
-  font-size: 1.4em;
-  font-weight: normal;
-  font-style: normal;
-  border-bottom: 2px dotted black;
-  border-top: 2px solid black;
+  color: #777777;
+  font-size: 1.0em;
+  font-weight: lighter;
+  font-style: italic;
+  border-bottom: 1px dotted #3d3d3d;
 }
 
 #post {
@@ -119,27 +123,54 @@ header > nav > ul > li > a:hover {
   padding: 16px;
 }
 
+#post > p {
+  text-indent: 1.0em;
+  margin: 0;
+}
+
+#post > p:first-of-type {
+  text-indent: 0;
+}
+
+#post > p:nth-of-type(1):first-letter{
+  float: left;
+  text-indent: 0;
+  font-size: 5.5em;
+  line-height: 80%;
+  padding-top: 0.05em;
+  padding-right: .05em;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+#post > p:first-of-type:first-line {
+  font-style: italic;
+}
+
 #post h1, #post h2, #post h3 {
-  font-family: 'Teko', sans-serif;
   font-weight: bold;
   font-style: normal;
-  text-transform: uppercase;
+  text-align: center;
 }
 
 #post h1 {
-  font-size: 2.3em;
+  font-size: 2.0em;
   font-weight: bold;
-  margin: 54px auto 10px auto;
+  text-transform: uppercase;
+  margin: 54px auto 24px auto;
+  padding-bottom: 10px;
+  letter-spacing: 0.1em;
 }
 
 #post h2 {
-  font-size: 1.9em;
+  font-size: 1.8em;
   font-weight: bold;
-  margin: 40px auto 6px auto;
+  margin: 40px auto 12px auto;
 }
 
 #post h3 {
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-weight: bold;
   margin: 30px auto 2px auto;
 }
@@ -150,42 +181,39 @@ header > nav > ul > li > a:hover {
   flex-direction: row;
   justify-content: flex-end;
   /* color: #486591; /1* dark blue *1/ */
-  font-family: 'Teko', sans-serif;
-  font-size: 1.4em;
-  font-weight: normal;
-  font-style: normal;
+  font-size: 1.0em;
+  font-weight: lighter;
+  font-style: italic;
 }
 
 #categories {
-  border-top: 2px dotted black;
+  border-top: 1px dotted #3d3d3d;
 }
 
 #tags {
-  border-bottom: 2px solid black;
+  /* border-bottom: 1px dashed black; */
 }
 
 #series {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: 'Teko', sans-serif;
-  font-size: 1.4em;
-  font-weight: normal;
-  font-style: normal;
   margin: 24px 0 0 0;
+  padding: 0 4px;
+  font-size: 1.0em;
+  font-weight: lighter;
+  font-style: italic;
 }
 
 h1.year {
   color: #aeaeae;
   padding-left: 16px;
-  font-family: 'Teko', sans-serif;
   margin: 64px auto 8px auto;
 }
 
 h2.month {
   color: #7a7a7a;
   padding-left: 32px;
-  font-family: 'Teko', sans-serif;
   margin: 16px auto 4px auto;
 }
 
@@ -201,9 +229,10 @@ ul.day {
 /* footer */
 
 #footerContainer {
-  background-color: #dadada;
+  /* background-color: #dadada; */
   display: flex;
   justify-content: center;
+  border-top: 1px solid #3d3d3d;
 }
 
 footer {
@@ -217,11 +246,9 @@ footer > nav > ul {
   list-style: none;
   flex-grow: 1;
   justify-content: space-around;
-  font-family: 'Teko', sans-serif;
-  font-size: 1.4em;
-  font-weight: normal;
-  font-style: normal;
   margin: 16px 0;
   padding: 0;
+  font-size: 1.0em;
+  font-weight: lighter;
 }
 
