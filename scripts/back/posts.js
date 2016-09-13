@@ -164,13 +164,13 @@ const publishPost = (file) => {
   if (previous || next) {
     template('#content').append('<div id="series"></div>');
     if (previous) {
-      template('#series').append(`<span id="previous"><a href="./${previous.meta.filename}">Previous</a></span>`);
+      template('#series').append(`<span id="previous"><a href="./${previous.meta.filename}">← Previous</a></span>`);
     }
     if (next) {
       if (previous) {
-        template('#series').append(`<span id="next"><a href="./${next.meta.filename}"> Next</a></span>`);
+        template('#series').append(`<span id="next"><a href="./${next.meta.filename}">Next →</a></span>`);
       } else {
-        template('#series').append(`<span id="next"><a href="./${next.meta.filename}">Next</a></span>`);
+        template('#series').append(`<span id="next"><a href="./${next.meta.filename}">Next →</a></span>`);
       }
     }
   }
