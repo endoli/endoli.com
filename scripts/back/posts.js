@@ -66,8 +66,11 @@ const copyAll = () => {
 
 const listPosts = () =>
   new Promise((resolve) => {
-    const list = fs.readdirSync('./blog/').filter((file) =>
-      fs.statSync(path.join('./blog/', file)).isFile());
+    const list = fs.readdirSync('./blog/').filter((file) => {
+      const isFile = fs.statSync(path.join('./blog/', file)).isFile();
+      const isHidden = !(/(^|\/)\.[^\/\.]/g).test(file);
+      return isFile && isHidden;
+    });
     const posts = _.map(list, (item) => path.join('./blog/', item));
 
     resolve(posts);
@@ -132,7 +135,7 @@ const publishPost = (file) => {
       <span class="date">${date}</span>
     </div>`
   );
-  template('#content').append('<div id="post"></div>');
+  template('#content').append('<article id="post"></article>');
   template('#post').append(file.contents);
 
   if (file.meta.categories) {

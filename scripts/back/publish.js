@@ -90,7 +90,7 @@ const scripts = () =>
 home()
   .then(styles)
   .then(scripts)
-  .then(crates)
+  // .then(crates)
   .then(libraries)
   .then(posts)
   .then(blog)
