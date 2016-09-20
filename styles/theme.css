@@ -171,6 +171,31 @@ header > nav > ul > li > a:hover {
   margin: 36px auto 2px auto;
 }
 
+#post code {
+  padding: 0.2em;
+  background: #f0f0f0;
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
+
+#post ul {
+  list-style-type: square;
+}
+
+#post blockquote {
+  padding: 0.3em 1.4em;
+  background: #f0f0f0;
+  font-size: 1.1em;
+  font-style: italic;
+  line-height: 1.4em;
+  border-left: 2px solid #777777;
+  margin: 24px 0;
+}
+
+#post blockquote p {
+  text-indent: 1.0em;
+}
+
 #categories, #tags {
   padding: 0 4px;
   display: flex;
@@ -235,6 +260,39 @@ ul.day {
   margin: 32px auto 24px auto;
 }
 
+#blogList {
+  padding: 16px;
+  list-style: none;
+}
+
+.blogTitle {
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 40px auto 4px auto;
+  letter-spacing: 0.05em;
+  line-height: 1.3em;
+}
+
+.blogTitle a {
+  color: #3d3d3d;
+}
+
+.blogMetadata {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.blogMore {
+  text-align: right;
+}
+
 /* footer */
 
 #footerContainer {
@@ -258,32 +316,5 @@ footer > nav > ul {
   padding: 0;
   font-size: 1.0em;
   font-weight: lighter;
-}
-
-/* various article content */
-
-#post code {
-  padding: 0.2em;
-  background: #f0f0f0;
-  font-size: 0.9em;
-  line-height: 1.3em;
-}
-
-#post ul {
-  list-style-type: square;
-}
-
-#post blockquote {
-  padding: 0.3em 1.4em;
-  background: #f0f0f0;
-  font-size: 1.1em;
-  font-style: italic;
-  line-height: 1.4em;
-  border-left: 2px solid #777777;
-  margin: 24px 0;
-}
-
-#post blockquote p {
-  text-indent: 1.0em;
 }
 

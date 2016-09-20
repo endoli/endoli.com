@@ -5,6 +5,14 @@ const fse = require('fs-extra');
 const cheerio = require('cheerio');
 const moment = require('moment');
 
+const extractExcerpt = (post) => {
+  if (post.meta.description) {
+    return post.meta.description;
+  }
+
+  return cheerio.load(post.contents)('p').contents()[0].data;
+};
+
 const start = (all) =>
   new Promise((resolve, reject) =>
     fs.readFile('templates/blog.html', 'utf8', (err, data) => {
@@ -13,51 +21,35 @@ const start = (all) =>
       } else {
         const template = cheerio.load(data);
         const posts = _(all)
-          .map(({ meta }) => ({
-            title: meta.title,
-            filename: meta.filename,
-            date: moment(meta.date),
+          .map((post) => ({
+            title: post.meta.title,
+            filename: post.meta.filename,
+            author: post.meta.author,
+            date: moment(post.meta.date),
+            excerpt: extractExcerpt(post),
           }))
           .sortBy((post) => post.date)
           .reverse()
-          .groupBy(({ date }) => date.year())
-          .transform((res, value, key) => {
-            res[key] = _.groupBy(value, ({ date }) => date.month());
-          })
-          .value();
-        const years = _(posts)
-          .keys()
-          .sortBy((year) => year)
-          .reverse()
           .value();
 
-        _.each(years, (year) => {
-          template('#content').append(`
-            <h1 class="year">${year}</h1>
+        template('#content').append('<ul id="blogList"></ul>');
+        const list = template('#blogList');
+
+        _.each(posts, (post) => {
+          list.append(`
+            <li>
+              <div class="blogTitle">
+                <a href="./blog/posts/${post.filename}">${post.title}</a>
+              </div>
+              <div class="blogMetadata">
+                by ${post.author} on ${moment(post.date).format('MMMM Do YYYY')}
+              </div>
+              <div class="blogExcerpt"><p>${post.excerpt}</p></div>
+              <div class="blogMore">
+                <a href="./blog/posts/${post.filename}">Read more...</a>
+              </div>
+            </li>
           `);
-
-          const months = _(posts[year])
-            .keys()
-            .sortBy((month) => month)
-            .reverse()
-            .value();
-
-          _.each(months, (month) => {
-            template('#content').append(`
-              <h2 class="month">${moment().month(month).format('MMMM')}</h2>
-            `);
-            let entries = '<ul class="day">';
-            _.each(posts[year][month], (post) => {
-              entries = entries.concat(`
-                <li>
-                  <span>${post.date.format('Do')}</span>
-                  <a href="./blog/posts/${post.filename}">${post.title}</a>
-                </li>
-              `);
-            });
-            entries = entries.concat('</ul>');
-            template('#content').append(entries);
-          });
         });
 
         fse.outputFile('./public/blog.html', template.html(), (err) => {

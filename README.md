@@ -36,6 +36,11 @@ title: Example
 author: John Doe
 published: false
 date: 2015-12-31
+description: >
+  Fusce ligula est. Lorem ipsum dolor sit amet. Proin ultricies eget dolor id
+  condimentum. Proin viverra sollicitudin tellus posuere accumsan. Ut tincidunt
+  sapien et turpis vulputate, at facilisis nisl euismod. Nam sed tortor vel quam
+  porta efficitur in nec nunc.
 categories:
   - One
   - Two
