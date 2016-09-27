@@ -2,10 +2,10 @@
   display: block;
   overflow-x: auto;
   padding: 1.0em 1.4em !important;
-  background: #F0F0F0;
+  background: #e8f1f5;
   font-size: 0.9em;
   line-height: 1.3em;
-  border-left: 2px solid #777777;
+  border-left: 2px solid #1164a6;
 }
 
 .hljs,
