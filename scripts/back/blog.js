@@ -52,7 +52,7 @@ const start = (all) =>
           `);
         });
 
-        fse.outputFile('./public/blog.html', template.html(), (err) => {
+        fse.outputFile('./public/index.html', template.html(), (err) => {
           if (err) {
             reject(err);
           } else {

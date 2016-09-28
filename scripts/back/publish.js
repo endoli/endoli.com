@@ -12,7 +12,6 @@ const path = require('path');
 const postcss = require('postcss');
 const posts = require('./posts.js');
 const tags = require('./tags.js');
-/* eslint-enable no-unused-vars */
 
 const series = (arr, iter) =>
   arr.reduce((p, item) => p.then(() => iter(item)), Promise.resolve());
@@ -87,8 +86,7 @@ const scripts = () =>
     });
   });
 
-home()
-  .then(styles)
+styles()
   .then(scripts)
   .then(crates)
   .then(libraries)
