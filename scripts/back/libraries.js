@@ -69,18 +69,20 @@ const createList = (libs) =>
   new Promise((resolve) => {
     const template = cheerio.load(fs.readFileSync('./templates/libraries.html', 'utf8'));
     template('#content').append(`
-      <table>
-        <thead>
-          <tr>
-            <th>Library</th>
-            <th>Release</th>
-            <th>Development</th>
-            <th>Versions</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Library</th>
+              <th>Release</th>
+              <th>Development</th>
+              <th>Versions</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     `);
 
     _.each(libs, (lib) => {
@@ -100,7 +102,7 @@ const createList = (libs) =>
           </td>
         `;
       } else {
-        libRelease = '<td>Unpublished</td>';
+        libRelease = '<td>N/A</td>';
       }
 
       libDevelopment = `
@@ -138,11 +140,14 @@ const createList = (libs) =>
         libVersions = '<td>N/A</td>';
       }
 
-      const lastRow = template('#content > table > tbody').append('<tr></tr>');
-      lastRow.append(libName);
-      lastRow.append(libRelease);
-      lastRow.append(libDevelopment);
-      lastRow.append(libVersions);
+      template('#content > div> table > tbody').append(`
+        <tr>
+          ${libName}
+          ${libRelease}
+          ${libDevelopment}
+          ${libVersions}
+        </tr>
+      `);
     });
 
     fse.outputFileSync('./public/libraries.html', template.html());

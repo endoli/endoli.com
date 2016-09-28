@@ -111,6 +111,7 @@ const publishPost = (file) => {
   let author;
   let date;
 
+  template('title').text(`Endoli - Blog - ${file.meta.title}`);
   template('head').append('<script src="../../scripts/highlight.js"></script>');
   _.each(config.highlight, (lang) => template('head').append(`<script src="${high}${lang}.min.js"></script>`));
   template('head').append('<script>hljs.initHighlightingOnLoad();</script>');
