@@ -1,0 +1,4 @@
+crates
+node_modules
+public
+scripts/front/highlight.js
