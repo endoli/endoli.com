@@ -159,7 +159,6 @@ const overrideStyles = (libs) =>
   new Promise((resolve) => {
     _.each(libs, (lib) => {
       _.each(lib.tags, (tag) => {
-        console.log(`./public/libraries/${lib.name}/${tag}/main.css`);
         execSync(`cat ./styles/override.css >> ./public/libraries/${lib.name}/${tag}/main.css`);
       });
     });

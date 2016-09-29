@@ -290,7 +290,6 @@ ul.day {
   width: 100%;
   margin: 64px auto 24px auto;
   border-collapse: collapse;
-  font-size: 0.8em;
 }
 
 #content th {
@@ -422,5 +421,9 @@ footer a:hover {
 }
 
 @media (max-width: 600px) {
+
+  #content table {
+    font-size: 0.8em;
+  }
 
 }

@@ -38,7 +38,7 @@ const start = (all) =>
 
           _.each(tag.posts, (post) => {
             const m = post.meta;
-            template('#content ul').append(`<li><a href="../posts/${m.filename}">${m.title}</a></li>`);
+            template('#content ul').append(`<li><a href="../../${m.location}">${m.title}</a></li>`);
           });
 
           fse.outputFileSync(location, template.html());

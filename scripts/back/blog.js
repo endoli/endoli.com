@@ -27,6 +27,7 @@ const start = (all) =>
             author: post.meta.author,
             date: moment(post.meta.date),
             excerpt: extractExcerpt(post),
+            location: post.meta.location,
           }))
           .sortBy((post) => post.date)
           .reverse()
@@ -39,14 +40,14 @@ const start = (all) =>
           list.append(`
             <li>
               <div class="blogTitle">
-                <a href="./blog/posts/${post.filename}">${post.title}</a>
+                <a href="./${post.location}">${post.title}</a>
               </div>
               <div class="blogMetadata">
                 by ${post.author} on ${moment(post.date).format('MMMM Do YYYY')}
               </div>
               <div class="blogExcerpt"><p>${post.excerpt}</p></div>
               <div class="blogMore">
-                <a href="./blog/posts/${post.filename}">Read more...</a>
+                <a href="./${post.location}">Read more...</a>
               </div>
             </li>
           `);
