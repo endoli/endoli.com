@@ -3,6 +3,7 @@
 const fse = require('fs-extra');
 const path = require('path');
 const _ = require('lodash');
+const execSync = require('child_process').execSync;
 const fs = require('fs');
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
@@ -96,7 +97,7 @@ const createList = (libs) =>
       if (lib.currentVersion) {
         libRelease = `
           <td>
-            <a href="${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html">
+            <a href="${config.host}libraries/${lib.name}/master/${lib.realName}/index.html">
               ${lib.currentVersion}
             </a>
           </td>
@@ -107,7 +108,7 @@ const createList = (libs) =>
 
       libDevelopment = `
         <td>
-          <a href="${config.host}/libraries/${lib.name}/master/${lib.realName}/index.html">
+          <a href="${config.host}libraries/${lib.name}/master/${lib.realName}/index.html">
             ${lib.developmentVersion}
           </a>
         </td>
@@ -121,7 +122,7 @@ const createList = (libs) =>
           .each((tag) => {
             if (normalizeTag(tag) !== lib.currentVersion) {
               options = options.concat(`
-                <option value="${config.host}/libraries/${lib.name}/${tag}/${lib.realName}/index.html">
+                <option value="${config.host}libraries/${lib.name}/${tag}/${lib.realName}/index.html">
                   ${tag}
                 </option>
               `);
@@ -154,8 +155,21 @@ const createList = (libs) =>
     resolve(libs);
   });
 
+const overrideStyles = (libs) =>
+  new Promise((resolve) => {
+    _.each(libs, (lib) => {
+      _.each(lib.tags, (tag) => {
+        console.log(`./public/libraries/${lib.name}/${tag}/main.css`);
+        execSync(`cat ./styles/override.css >> ./public/libraries/${lib.name}/${tag}/main.css`);
+      });
+    });
+    resolve(libs);
+  });
+
 module.exports = () => start()
   .then(listLibs)
   .then(listCurrent)
   .then(listTags)
-  .then(createList);
+  .then(createList)
+  .then(overrideStyles);
+
