@@ -202,7 +202,14 @@ header > nav > ul > li > .active {
   margin: 36px auto 2px auto;
 }
 
-#post .highlight {
+#post p code {
+  padding: 0.2em;
+  background: #e8f1f5;
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
+
+#post pre .highlight {
   padding: 0.3em 1.4em;
   background: #e8f1f5;
   font-size: 0.9em;
