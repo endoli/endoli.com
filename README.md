@@ -7,6 +7,7 @@
 - npm
 - rust
 - cargo
+- pygments
 
 ## Instructions
 
