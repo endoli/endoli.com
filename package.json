@@ -13,18 +13,17 @@
     "dotenv": "^2.0.0",
     "fs-extra": "^0.30.0",
     "lodash": "^4.14.1",
+    "marked": "^0.3.6",
     "moment": "^2.14.1",
     "moment-timezone": "^0.5.5",
     "node-fetch": "^1.6.0",
     "nodegit": "^0.14.1",
     "postcss": "^5.1.2",
-    "remark": "^5.1.0",
-    "remark-highlight.js": "^4.0.0",
-    "remark-html": "^5.0.0",
-    "remark-yaml-meta": "^0.1.0",
+    "pygmentize-bundled": "^2.3.0",
     "rss": "^1.2.1",
     "toml": "^2.3.0",
-    "toml-require": "^1.1.0"
+    "toml-require": "^1.1.0",
+    "yaml-front-matter": "^3.4.0"
   },
   "devDependencies": {
     "eslint": "^3.2.2",

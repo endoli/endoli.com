@@ -1,15 +1,5 @@
 {
   "host": "https://example.com/",
-  "highlight": [
-    "armasm",
-    "capnproto",
-    "cpp",
-    "javascript",
-    "json",
-    "rust",
-    "x86asm",
-    "xml"
-  ],
   "crates": [
     {
       "name": "commands",

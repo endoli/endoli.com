@@ -4,12 +4,26 @@ const path = require('path');
 const fs = require('fs');
 const fse = require('fs-extra');
 const moment = require('moment');
-const remark = require('remark');
-const html = require('remark-html');
-const hljs = require('remark-highlight.js');
-const metaPlugin = require('remark-yaml-meta');
+const yamlFront = require('yaml-front-matter');
+const marked = require('marked');
+const pygmentize = require('pygmentize-bundled');
 const cheerio = require('cheerio');
-const config = require('../../config.json');
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  highlight: (code, lang, callback) => {
+    pygmentize({ lang, format: 'html' }, code, (err, result) => {
+      callback(err, result.toString());
+    });
+  },
+});
 
 let all = [];
 
@@ -55,10 +69,6 @@ const copyAll = () => {
       input: path.resolve('./templates/blog.html'),
       output: path.resolve('./public/blog.html'),
     },
-    {
-      input: path.resolve('./scripts/front/highlight.js'),
-      output: path.resolve('./public/scripts/highlight.js'),
-    },
   ];
 
   return series(files, (file) => copy(file.input, file.output));
@@ -77,35 +87,39 @@ const listPosts = () =>
   });
 
 
-/* eslint-disable no-shadow */
+/* eslint-disable no-shadow, no-underscore-dangle */
 const parsePost = (post) =>
   new Promise((resolve, reject) => {
     fs.readFile(post, 'utf8', (err, data) => {
       if (err) {
         reject(err);
       } else {
-        remark()
-          .use(metaPlugin)
-          .use(html)
-          .use(hljs, { include: config.highlight })
-          .process(data, (err, file) => {
+        const yamlStage = yamlFront.loadFront(data);
+        const contents = yamlStage.__content;
+        delete yamlStage.__content;
+        const file = { meta: yamlStage };
+        marked(contents, (err, content) => {
+          if (err) {
+            reject(err);
+          } else {
+            file.contents = content;
             file.meta.filename = path.basename(post).replace('.md', '.html');
             file.meta.location = `blog/posts/${moment(file.meta.date).format('YYYY/MM/DD')}/${file.meta.filename}`;
             if (file.meta.published) {
               all.push(file);
             }
             resolve();
-          });
+          }
+        });
       }
     });
   });
-/* eslint-enable no-shadow */
+/* eslint-enable no-shadow, no-underscore-dangle */
 
 const parseAll = (posts) => series(posts, (post) => parsePost(post));
 
 const publishPost = (file) => {
   const template = cheerio.load(fs.readFileSync('templates/post.html', 'utf-8'));
-  const high = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/';
   const previous = getPrevious(file);
   const next = getNext(file);
 
@@ -113,9 +127,6 @@ const publishPost = (file) => {
   let date;
 
   template('title').text(`Endoli - Blog - ${file.meta.title}`);
-  template('head').append('<script src="../../../../../scripts/highlight.js"></script>');
-  _.each(config.highlight, (lang) => template('head').append(`<script src="${high}${lang}.min.js"></script>`));
-  template('head').append('<script>hljs.initHighlightingOnLoad();</script>');
 
   if (file.meta.author) {
     author = `<div id="author">${file.meta.author}</div>`;
