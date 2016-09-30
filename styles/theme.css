@@ -299,6 +299,10 @@ ul.day {
   padding: 4px;
 }
 
+#content td, #content th {
+  padding: 4px;
+}
+
 #content tr:nth-child(even) {
   background-color: #e8f1f5;
 }
