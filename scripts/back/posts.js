@@ -17,7 +17,7 @@ marked.setOptions({
   pedantic: false,
   sanitize: false,
   smartLists: true,
-  smartypants: false,
+  smartypants: true,
   highlight: (code, lang, callback) => {
     pygmentize({ lang, format: 'html' }, code, (err, result) => {
       callback(err, result.toString());

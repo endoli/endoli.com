@@ -209,7 +209,15 @@ header > nav > ul > li > .active {
   line-height: 1.3em;
 }
 
+#post pre {
+  line-height: 0;
+}
+#post .highlight pre {
+  line-height: 1.3em;
+}
+
 #post pre .highlight {
+  white-space: pre;
   padding: 0.3em 1.4em;
   background: #e8f1f5;
   font-size: 0.9em;
