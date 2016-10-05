@@ -406,7 +406,7 @@ footer .github {
   width: 20px;
   background-size: 20px;
   opacity: 0.9;
-  background-image:url("../assets/style/github.svg");
+  background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%22-751%201009%2032%2032%22%20style%3D%22enable-background%3Anew%20-751%201009%2032%2032%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text/css%22%3E%0A%09.st0%7Bfill%3A%231164A6%3B%7D%0A%3C/style%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M-735%2C1009.4c-8.8%2C0-16%2C7.2-16%2C16c0%2C7.1%2C4.6%2C13.1%2C10.9%2C15.2c0.8%2C0.1%2C1.1-0.3%2C1.1-0.8c0-0.4%2C0-1.6%2C0-3%0A%09c-4.5%2C1-5.4-1.9-5.4-1.9c-0.7-1.8-1.8-2.3-1.8-2.3c-1.5-1%2C0.1-1%2C0.1-1c1.6%2C0.1%2C2.5%2C1.6%2C2.5%2C1.6c1.4%2C2.4%2C3.7%2C1.7%2C4.7%2C1.3%0A%09c0.1-1%2C0.6-1.7%2C1-2.1c-3.6-0.4-7.3-1.8-7.3-7.9c0-1.7%2C0.6-3.2%2C1.6-4.3c-0.2-0.4-0.7-2%2C0.2-4.2c0%2C0%2C1.3-0.4%2C4.4%2C1.6%0A%09c1.3-0.4%2C2.6-0.5%2C4-0.5c1.4%2C0%2C2.7%2C0.2%2C4%2C0.5c3.1-2.1%2C4.4-1.6%2C4.4-1.6c0.9%2C2.2%2C0.3%2C3.8%2C0.2%2C4.2c1%2C1.1%2C1.6%2C2.5%2C1.6%2C4.3%0A%09c0%2C6.1-3.7%2C7.5-7.3%2C7.9c0.6%2C0.5%2C1.1%2C1.5%2C1.1%2C3c0%2C2.1%2C0%2C3.9%2C0%2C4.4c0%2C0.4%2C0.3%2C0.9%2C1.1%2C0.8c6.4-2.1%2C10.9-8.1%2C10.9-15.2%0A%09C-719%2C1016.6-726.2%2C1009.4-735%2C1009.4z%22/%3E%0A%3C/svg%3E%0A');
 }
 
 footer .twitter {
@@ -415,7 +415,7 @@ footer .twitter {
   width: 20px;
   background-size: 20px;
   opacity: 0.9;
-  background-image:url("../assets/style/twitter.svg");
+  background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%22-751%201009%2032%2032%22%20style%3D%22enable-background%3Anew%20-751%201009%2032%2032%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text/css%22%3E%0A%09.st0%7Bfill%3A%231164A6%3B%7D%0A%3C/style%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M-733.3%2C1027.3l1.1-4.6h-4.5l-1.1%2C4.6H-733.3z%20M-719.6%2C1018.3l-1%2C4c-0.1%2C0.3-0.3%2C0.4-0.6%2C0.4h-5.8l-1.1%2C4.6h5.6%0A%09c0.2%2C0%2C0.3%2C0.1%2C0.4%2C0.2c0.1%2C0.2%2C0.2%2C0.3%2C0.1%2C0.5l-1%2C4c-0.1%2C0.3-0.2%2C0.4-0.6%2C0.4h-5.8l-1.4%2C5.9c-0.1%2C0.3-0.3%2C0.4-0.6%2C0.4h-4%0A%09c-0.2%2C0-0.3-0.1-0.5-0.2c-0.1-0.1-0.1-0.3-0.1-0.5l1.4-5.6h-4.5l-1.4%2C5.9c-0.1%2C0.3-0.3%2C0.4-0.6%2C0.4h-4c-0.2%2C0-0.3-0.1-0.4-0.2%0A%09c-0.1-0.1-0.1-0.3-0.1-0.5l1.4-5.6h-5.6c-0.2%2C0-0.3-0.1-0.4-0.2c-0.1-0.1-0.1-0.3-0.1-0.5l1-4c0.1-0.3%2C0.3-0.4%2C0.6-0.4h5.8l1.1-4.6%0A%09h-5.6c-0.2%2C0-0.3-0.1-0.4-0.2c-0.1-0.2-0.2-0.3-0.1-0.5l1-4c0.1-0.3%2C0.2-0.4%2C0.6-0.4h5.8l1.4-5.9c0.1-0.3%2C0.3-0.4%2C0.6-0.4h4%0A%09c0.2%2C0%2C0.3%2C0.1%2C0.4%2C0.2c0.1%2C0.1%2C0.1%2C0.3%2C0.1%2C0.5l-1.4%2C5.6h4.5l1.4-5.9c0.1-0.3%2C0.3-0.4%2C0.6-0.4h4c0.2%2C0%2C0.3%2C0.1%2C0.4%2C0.2%0A%09c0.1%2C0.1%2C0.1%2C0.3%2C0.1%2C0.5l-1.4%2C5.6h5.6c0.2%2C0%2C0.3%2C0.1%2C0.4%2C0.2C-719.6%2C1017.9-719.6%2C1018.1-719.6%2C1018.3L-719.6%2C1018.3z%22/%3E%0A%3C/svg%3E%0A');
 }
 
 footer .irc {
@@ -424,7 +424,7 @@ footer .irc {
   width: 20px;
   background-size: 20px;
   opacity: 0.9;
-  background-image:url("../assets/style/hashtag.svg");
+  background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%22-751%201009%2032%2032%22%20style%3D%22enable-background%3Anew%20-751%201009%2032%2032%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text/css%22%3E%0A%09.st0%7Bfill%3A%231164A6%3B%7D%0A%3C/style%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M-746.7%2C1032.5c-2.3%2C0-4.3%2C1.9-4.3%2C4.3c0%2C2.3%2C1.9%2C4.2%2C4.3%2C4.2c2.4%2C0%2C4.3-1.9%2C4.3-4.2%0A%09C-742.5%2C1034.4-744.4%2C1032.5-746.7%2C1032.5z%20M-751%2C1019.9v6.1c4%2C0%2C7.7%2C1.6%2C10.6%2C4.4c2.8%2C2.8%2C4.4%2C6.6%2C4.4%2C10.6h6.2%0A%09C-729.9%2C1029.3-739.4%2C1019.9-751%2C1019.9z%20M-751%2C1009v6.1c14.2%2C0%2C25.8%2C11.6%2C25.8%2C25.9h6.2C-719%2C1023.4-733.4%2C1009-751%2C1009z%22/%3E%0A%3C/svg%3E%0A');
 }
 
 footer .rss {
@@ -433,7 +433,7 @@ footer .rss {
   width: 20px;
   background-size: 20px;
   opacity: 0.9;
-  background-image:url("../assets/style/rss.svg");
+  background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%22-751%201009%2032%2032%22%20style%3D%22enable-background%3Anew%20-751%201009%2032%2032%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text/css%22%3E%0A%09.st0%7Bfill%3A%231164A6%3B%7D%0A%3C/style%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M-719%2C1016.1c-1.2%2C0.5-2.4%2C0.9-3.8%2C1c1.4-0.8%2C2.4-2.1%2C2.9-3.6c-1.3%2C0.8-2.7%2C1.3-4.2%2C1.6%0A%09c-1.2-1.3-2.9-2.1-4.8-2.1c-3.6%2C0-6.6%2C2.9-6.6%2C6.6c0%2C0.5%2C0.1%2C1%2C0.2%2C1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6%2C1-0.9%2C2.1-0.9%2C3.3%0A%09c0%2C2.3%2C1.2%2C4.3%2C2.9%2C5.5c-1.1%2C0-2.1-0.3-3-0.8c0%2C0%2C0%2C0.1%2C0%2C0.1c0%2C3.2%2C2.3%2C5.8%2C5.3%2C6.4c-0.5%2C0.2-1.1%2C0.2-1.7%2C0.2c-0.4%2C0-0.8%2C0-1.2-0.1%0A%09c0.8%2C2.6%2C3.3%2C4.5%2C6.1%2C4.6c-2.2%2C1.8-5.1%2C2.8-8.2%2C2.8c-0.5%2C0-1%2C0-1.6-0.1c2.9%2C1.9%2C6.4%2C2.9%2C10.1%2C2.9c12.1%2C0%2C18.7-10%2C18.7-18.7%0A%09c0-0.3%2C0-0.6%2C0-0.9C-721%2C1018.6-719.9%2C1017.4-719%2C1016.1L-719%2C1016.1z%22/%3E%0A%3C/svg%3E%0A');
 }
 
 footer a:hover {
