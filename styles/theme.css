@@ -49,19 +49,9 @@ header {
   align-items: flex-end;
   width: 640px;
   margin-top: -8px;
-  /* height: 86px; */
-  /* padding-bottom: 10px; */
 }
 
 header > .logo {
-  /* width: 192px; */
-  /* height: 64px; */
-  /* width: 100px; */
-  /* height: 100px; */
-  /* margin: 0 0 -10px 0; */
-  /* padding: 0; */
-  /* background: #486591; */
-  /* background: red; */
 }
 
 header > nav {

@@ -10,6 +10,7 @@
   "dependencies": {
     "autoprefixer": "^6.4.1",
     "cheerio": "^0.20.0",
+    "cssnano": "^3.7.6",
     "dotenv": "^2.0.0",
     "fs-extra": "^0.30.0",
     "lodash": "^4.14.1",
@@ -18,7 +19,9 @@
     "moment-timezone": "^0.5.5",
     "node-fetch": "^1.6.0",
     "nodegit": "^0.14.1",
+    "normalize.css": "^5.0.0",
     "postcss": "^5.1.2",
+    "postcss-import": "^8.1.2",
     "pygmentize-bundled": "^2.3.0",
     "rss": "^1.2.1",
     "toml": "^2.3.0",

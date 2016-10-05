@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars, no-shadow */
 const assets = require('./assets.js');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const atImport = require('postcss-import');
 const blog = require('./blog.js');
 const categories = require('./categories.js');
 const crates = require('./crates.js');
@@ -29,22 +31,21 @@ const home = () =>
     });
   });
 
-const style = (input, output) =>
+const style = () =>
   new Promise((resolve, reject) => {
-    fs.readFile(input, (err, css) => {
+    fs.readFile('./styles/input.css', (err, css) => {
       if (err) {
         reject(err);
       } else {
-        postcss([autoprefixer])
+        postcss([atImport(), autoprefixer, cssnano()])
           .process(css)
           .then((result) =>
-            fse.ensureDir(path.dirname(output), (err) => {
+            fse.ensureDir(path.dirname('./public/styles/delft.css'), (err) => {
               if (err) {
                 reject(err);
               } else {
-                fs.writeFile(output, result, (err) => {
+                fs.writeFile('./public/styles/delft.css', result, (err) => {
                   if (err) {
-                    console.log('2');
                     reject(err);
                   } else {
                     resolve();
@@ -57,21 +58,6 @@ const style = (input, output) =>
       }
     });
   });
-
-const styles = () => {
-  const files = [
-    {
-      input: './styles/theme.css',
-      output: './public/styles/theme.css',
-    },
-    {
-      input: './styles/highlight.css',
-      output: './public/styles/highlight.css',
-    },
-  ];
-
-  return series(files, (file) => style(file.input, file.output));
-};
 
 const scripts = () =>
   new Promise((resolve, reject) => {
@@ -86,7 +72,7 @@ const scripts = () =>
     });
   });
 
-styles()
+style()
   .then(scripts)
   // .then(crates)
   .then(libraries)
