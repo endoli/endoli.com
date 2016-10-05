@@ -74,7 +74,7 @@ const scripts = () =>
 
 style()
   .then(scripts)
-  // .then(crates)
+  .then(crates)
   .then(libraries)
   .then(posts)
   .then(blog)
