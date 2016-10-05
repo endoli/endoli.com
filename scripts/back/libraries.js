@@ -131,7 +131,7 @@ const createList = (libs) =>
 
         libVersions = `
           <td>
-            <select class="versionSelector">
+            <select class="versionSelector" onchange="onVersionChange">
               <option value="other">Other versions</option>
               ${options}
             </select>
