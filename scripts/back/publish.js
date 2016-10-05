@@ -59,21 +59,8 @@ const style = () =>
     });
   });
 
-const scripts = () =>
-  new Promise((resolve, reject) => {
-    const input = './scripts/front/page.js';
-    const output = './public/scripts/page.js';
-    fse.copy(input, output, { clobber: true }, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
 
 style()
-  .then(scripts)
   .then(crates)
   .then(libraries)
   .then(posts)
