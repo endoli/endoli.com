@@ -7,8 +7,9 @@ function onVersionChange() {
 }
 
 window.onload = function () {
-  $('select').each(function(selector) {
-    $(this).on('change', onVersionChange.bind(this));
-  });
+  var selectors = document.getElementsByTagName('select');
+  for (var i = 0; i < selectors.length; i++) {
+    selectors[i].setAttribute("onchange", onVersionChange.bind(selectors[i]));
+  }
 };
 
