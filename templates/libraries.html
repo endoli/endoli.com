@@ -8,9 +8,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <link rel="stylesheet" href="./styles/delft.css" />
     <script>
-      function onVersionChange() {
-        if (this.value !== 'other') {
-          location = this.value;
+      function onVersionChange(select) {
+        if (select.value !== 'other') {
+          location = select.value;
         }
       }
     </script>
@@ -46,7 +46,6 @@
         </nav>
       </footer>
     </div>
-    <script src="./scripts/page.js"></script>
   </body>
 
 </html>
