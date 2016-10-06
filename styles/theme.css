@@ -437,3 +437,86 @@ footer a:hover {
   }
 
 }
+
+@media print {
+
+  body, html {
+    background-color: transparent !important;
+  }
+
+  body {
+    background-image: none !important;
+    color: #000000 !important;
+    border: 0 !important;
+  }
+
+  #headerContainer {
+    display: none !important;
+  }
+
+  #footerContainer {
+    display:none !important;
+  }
+
+  .subtitle {
+    display:none !important;
+  }
+
+  #categories {
+    display:none !important;
+  }
+
+  #tags {
+    display:none !important;
+  }
+
+  #series {
+    display:none !important;
+  }
+
+  #content {
+    width: 100% !important;
+  }
+
+  p {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    page-break-inside: avoid !important;
+  }
+
+  img {
+    display: block !important;
+    page-break-inside: avoid !important;
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    max-width: 100% !important;
+  }
+
+  a:after {
+    content: " <" attr(href) "> " !important;
+  }
+
+  blockquote {
+    color: #cccccc !important;
+    border-left: 2px solid #aaaaaa !important;
+  }
+
+  #post pre .highlight {
+    color: #cccccc;
+    border-left: 2px solid #aaaaaa !important;
+  }
+
+  #post code {
+    color: #cccccc !important;
+  }
+
+  a {
+    color: #999999;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #999999;
+  }
+
+}
