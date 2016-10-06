@@ -1,5 +1,6 @@
-/* eslint-disable max-len, no-shadow */
+/* eslint-disable max-len, no-shadow, no-param-reassign */
 const _ = require('lodash');
+const cfg = require('../../config.json');
 const path = require('path');
 const fs = require('fs');
 const fse = require('fs-extra');
@@ -8,6 +9,7 @@ const yamlFront = require('yaml-front-matter');
 const marked = require('marked');
 const pygmentize = require('pygmentize-bundled');
 const cheerio = require('cheerio');
+const parse = require('url-parse');
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -86,6 +88,19 @@ const listPosts = () =>
     resolve(posts);
   });
 
+const checkDomain = (url) => {
+  const location = parse(cfg.host);
+  if (url.indexOf('//') === 0) {
+    url = location.protocol + url;
+  }
+  return url.toLowerCase().replace(/([a-z])?:\/\//, '$1').split('/')[0];
+};
+
+const isExternal = (url) => {
+  const location = parse(cfg.host);
+  return ((url.indexOf(':') > -1 || url.indexOf('//') > -1) &&
+    checkDomain(location.href) !== checkDomain(url));
+};
 
 /* eslint-disable no-shadow, no-underscore-dangle */
 const parsePost = (post) =>
@@ -102,7 +117,13 @@ const parsePost = (post) =>
           if (err) {
             reject(err);
           } else {
-            file.contents = content;
+            const parsed = cheerio.load(content);
+            parsed('a').each((i, e) => {
+              if (isExternal(cheerio(e).attr('href'))) {
+                cheerio(e).attr('target', '_blank');
+              }
+            });
+            file.contents = parsed.html();
             file.meta.filename = path.basename(post).replace('.md', '.html');
             file.meta.location = `blog/posts/${moment(file.meta.date).format('YYYY/MM/DD')}/${file.meta.filename}`;
             if (file.meta.published) {
