@@ -97,7 +97,7 @@ const createList = (libs) =>
       if (lib.currentVersion) {
         libRelease = `
           <td>
-            <a href="${config.host}libraries/${lib.name}/master/${lib.realName}/index.html">
+            <a href="${lib.name}/master/${lib.realName}/index.html">
               ${lib.currentVersion}
             </a>
           </td>
@@ -108,7 +108,7 @@ const createList = (libs) =>
 
       libDevelopment = `
         <td>
-          <a href="${config.host}libraries/${lib.name}/master/${lib.realName}/index.html">
+          <a href="${lib.name}/master/${lib.realName}/index.html">
             ${lib.developmentVersion}
           </a>
         </td>
@@ -122,7 +122,7 @@ const createList = (libs) =>
           .each((tag) => {
             if (normalizeTag(tag) !== lib.currentVersion) {
               options = options.concat(`
-                <option value="${config.host}libraries/${lib.name}/${tag}/${lib.realName}/index.html">
+                <option value="${lib.name}/${tag}/${lib.realName}/index.html">
                   ${tag}
                 </option>
               `);
@@ -151,7 +151,7 @@ const createList = (libs) =>
       `);
     });
 
-    fse.outputFileSync('./public/libraries.html', template.html());
+    fse.outputFileSync('./public/libraries/index.html', template.html());
     resolve(libs);
   });
 
