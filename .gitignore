@@ -2,6 +2,7 @@
 crates
 public
 config.json
+package-lock.json
 blog/example-one.md
 blog/example-two.md
 blog/example-three.md
