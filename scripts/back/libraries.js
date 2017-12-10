@@ -108,9 +108,7 @@ const createList = (libs) =>
 
       libDevelopment = `
         <td>
-          <a href="${lib.name}/master/${lib.realName}/index.html">
-            ${lib.developmentVersion}
-          </a>
+          <a href="${lib.name}/master/${lib.realName}/index.html">master</a>
         </td>
       `;
 
