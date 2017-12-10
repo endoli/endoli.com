@@ -15,7 +15,7 @@ const build = (all) =>
       feed.item({
         title: post.meta.title,
         description: post.content,
-        url: `${config.host}/${post.meta.filename}`,
+        url: `${config.host}${post.meta.location}`,
         date: post.meta.date,
         categories: post.meta.categories,
       });
