@@ -29,11 +29,6 @@ marked.setOptions({
 
 let all = [];
 
-const start = () =>
-  new Promise((resolve) => {
-    fse.emptyDir('./public/blog/', () => resolve());
-  });
-
 const getPrevious = (post) => {
   const isThere = _.findIndex(all, (one) => _.isEqual(one.meta, post.meta));
   if (isThere === -1 || isThere === all.length - 1) {
@@ -125,7 +120,7 @@ const parsePost = (post) =>
             });
             file.contents = parsed.html();
             file.meta.filename = path.basename(post).replace('.md', '.html');
-            file.meta.location = `blog/posts/${moment(file.meta.date).format('YYYY/MM/DD')}/${file.meta.filename}`;
+            file.meta.location = `${moment(file.meta.date).format('YYYY/MM/DD')}/${file.meta.filename}`;
             if (file.meta.published) {
               all.push(file);
             }
@@ -176,9 +171,9 @@ const publishPost = (file) => {
     template('#content').append('<div id="categories">Categories:&nbsp;</div>');
     _.each(file.meta.categories, (category, index) => {
       if (index !== file.meta.categories.length - 1) {
-        template('#categories').append(`<span><a href="../../../../categories/${category}.html">${category}</a>,&nbsp;</span>`);
+        template('#categories').append(`<span><a href="../../../categories/${category}.html">${category}</a>,&nbsp;</span>`);
       } else {
-        template('#categories').append(`<span><a href="../../../../categories/${category}.html">${category}</a></span>`);
+        template('#categories').append(`<span><a href="../../../categories/${category}.html">${category}</a></span>`);
       }
     });
   } else {
@@ -189,9 +184,9 @@ const publishPost = (file) => {
     template('#content').append('<div id="tags">Tags:&nbsp;</div>');
     _.each(file.meta.tags, (tag, index) => {
       if (index !== file.meta.tags.length - 1) {
-        template('#tags').append(`<span><a href="../../../../tags/${tag}.html">${tag}</a>,&nbsp;</span>`);
+        template('#tags').append(`<span><a href="../../../tags/${tag}.html">${tag}</a>,&nbsp;</span>`);
       } else {
-        template('#tags').append(`<span><a href="../../../../tags/${tag}.html">${tag}</a></span>`);
+        template('#tags').append(`<span><a href="../../../tags/${tag}.html">${tag}</a></span>`);
       }
     });
   } else {
@@ -201,18 +196,18 @@ const publishPost = (file) => {
   if (previous || next) {
     template('#content').append('<div id="series"></div>');
     if (previous) {
-      template('#series').append(`<span id="previous"><a href="../../../../../${previous.meta.location}">← Previous</a></span>`);
+      template('#series').append(`<span id="previous"><a href="../../../${previous.meta.location}">← Previous</a></span>`);
     }
     if (next) {
       if (previous) {
-        template('#series').append(`<span id="next"><a href="../../../../../${next.meta.location}">Next →</a></span>`);
+        template('#series').append(`<span id="next"><a href="../../../${next.meta.location}">Next →</a></span>`);
       } else {
-        template('#series').append(`<span id="next"><a href="../../../../../${next.meta.location}">Next →</a></span>`);
+        template('#series').append(`<span id="next"><a href="../../../${next.meta.location}">Next →</a></span>`);
       }
     }
   }
 
-  fse.outputFileSync(path.join('./public//', file.meta.location), template.html());
+  fse.outputFileSync(path.join('./public/', file.meta.location), template.html());
 };
 
 const publishAll = () =>
@@ -227,8 +222,7 @@ const publishAll = () =>
     resolve();
   });
 
-module.exports = () => start()
-  .then(copyAll)
+module.exports = () => copyAll()
   .then(listPosts)
   .then(parseAll)
   .then(publishAll)
